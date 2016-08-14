@@ -12,26 +12,26 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="preferences-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <h1 class="title-large"><?= Html::encode($this->title) ?></h1>
 
-    <p>
+    <div class="item-container margin-top-30 margin-bottom-30">
         <?= Html::a(Yii::t('app', 'Create Preferences'), ['create'], ['class' => 'btn btn-secondary']) ?>
-    </p>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'filterModel'  => $searchModel,
+            'columns'      => [
+                ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'key',
-            'value',
-            'editable',
+                'id',
+                'key',
+                'value',
+                'editable',
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+                ['class'    => 'yii\grid\ActionColumn',
+                 'template' => '<div class="nowrap">{update} {delete}</div>'],
+            ],
+        ]); ?>
 
+    </div>
 </div>

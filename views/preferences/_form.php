@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use c006\activeForm\ActiveForm;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model c006\preferences\models\Preferences */
@@ -10,18 +10,20 @@ use c006\activeForm\ActiveForm;
 
 <div class="preferences-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <div class="item-container margin-top-30 margin-bottom-30">
 
-    <?= $form->field($model, 'key')->textInput(['maxlength' => true]) ?>
+        <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'value')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'key')->textInput(['maxlength' => TRUE]) ?>
 
-    <?= $form->field($model, 'editable')->textInput() ?>
+        <?= $form->field($model, 'value')->textInput(['maxlength' => TRUE]) ?>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-secondary' : 'btn btn-primary']) ?>
+        <?= $form->field($model, 'editable')->textInput() ?>
+
+        <div class="form-group">
+            <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => 'btn btn-primary']) ?>
+        </div>
+
+        <?php ActiveForm::end(); ?>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>

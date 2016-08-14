@@ -2,6 +2,7 @@
 
 namespace c006\preferences\controllers;
 
+use c006\alerts\Alerts;
 use Yii;
 use c006\preferences\models\Preferences;
 use c006\preferences\models\search\Preferences as PreferencesSearch;
@@ -63,7 +64,11 @@ class PreferencesController extends Controller
         $model = new Preferences();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+
+            Alerts::setMessage("Success: Preference created");
+            Alerts::setAlertType(Alerts::ALERT_SUCCESS);
+
+            return $this->redirect(['index', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -82,7 +87,11 @@ class PreferencesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+
+            Alerts::setMessage("Success: Preference updated");
+            Alerts::setAlertType(Alerts::ALERT_INFO);
+
+            return $this->redirect(['index', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
