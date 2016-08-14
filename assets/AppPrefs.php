@@ -6,7 +6,9 @@ class AppPrefs
 {
 
  static public function getPreference() {
-
+        $a = '';
+        $a = '';
+        $a = '';
  }
 
 }
